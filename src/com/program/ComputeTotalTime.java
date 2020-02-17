@@ -5,6 +5,8 @@ import com.program.ciphers.CipherException;
 import com.program.ciphers.GlobalMethod;
 import com.program.ciphers.atbash.AtbashCipherImpl;
 import com.program.ciphers.atbash.IAtbashCipher;
+import com.program.ciphers.autokey.AutokeyCipherImpl;
+import com.program.ciphers.autokey.IAutokeyCipher;
 import com.program.ciphers.caesar.CaesarCipherImpl;
 import com.program.ciphers.caesar.ICaesarCipher;
 import com.program.ciphers.columnartransposition.ColumnarTranspositionCipherImpl;
@@ -29,6 +31,7 @@ public class ComputeTotalTime {
 		IPolybiusSquareCipher polybiusSquare = new PolybiusSquareCipherImpl();
 		ISimpleSubstitutionCipher simpleSubstitution = new SimpleSubstitutionCipherImpl();
 		IColumnarTranspositionCipher columnarTransposition = new ColumnarTranspositionCipherImpl();
+		IAutokeyCipher autokey = new AutokeyCipherImpl();
 		
 	
 		//Atbash----------------------------------------------------------
@@ -51,22 +54,28 @@ public class ComputeTotalTime {
 		System.out.println(railfence.railfenceEncode("Hello World!", 3));
 		System.out.println(railfence.railfenceDecode("Horel ol!lWd", 3));
 		
-		//Railfence---------------------------------------------------------
+		//Polybius square---------------------------------------------------------
 		System.out.println("--------------Polybius Square---------------------");
 		String key = GlobalMethod.randomizeAlphabet(GlobalMethod.polybiusAlphabet);
 		System.out.println(polybiusSquare.polybiusSquareEncode("Hello World!", key, "ABCDE"));
 		System.out.println(polybiusSquare.polybiusSquareDecode(polybiusSquare.polybiusSquareEncode("Hello World!", key, "ABCDE"), key, "ABCDE"));
 		
-		//Railfence---------------------------------------------------------
+		//Simple Substitution---------------------------------------------------------
 		System.out.println("--------------Simple Substitution---------------------");
 		key = GlobalMethod.randomizeAlphabet(GlobalMethod.alphabet);
 		System.out.println(simpleSubstitution.simpleSubstitutionEncode("Hello World!", key));
 		System.out.println(simpleSubstitution.simpleSubstitutionDecode(simpleSubstitution.simpleSubstitutionEncode("Hello World!", key), key));
 		
-		//Railfence---------------------------------------------------------
+		//Columnar Transposition---------------------------------------------------------
 		System.out.println("-----------------Columnar transposition------------------------");
 		System.out.println(columnarTransposition.columnarTranspositionEncode("Hello World", "german", 'x'));
 		System.out.println(columnarTransposition.columnarTranspositionDecode("odeohwll xlr", "german", 'x'));
+		
+		//Autokey---------------------------------------------------------
+		System.out.println("------------------------Autokey------------------------");
+		System.out.println(autokey.autokeyEncode("Hello World", "hello"));
+		System.out.println(columnarTransposition.columnarTranspositionDecode("odeohwll xlr", "german", 'x'));
+		
 		
 	}
 	
