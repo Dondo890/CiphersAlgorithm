@@ -43,9 +43,7 @@ public class ColumnarTranspositionCipherImpl implements IColumnarTranspositionCi
 						columnarTable[i][j] = phrase.charAt(counter++);
 					}
 				}
-				System.out.print(columnarTable[i][j]);
 			}
-			System.out.println();
 		}
 		
 		// Sort 2d array by key
@@ -73,9 +71,7 @@ public class ColumnarTranspositionCipherImpl implements IColumnarTranspositionCi
 		for(int i=0; i<columnarTable[0].length; i++) {
 			for(int j=1; j<columnarTable.length; j++) {
 				encodedMessage.append(columnarTable[j][i]);
-				System.out.print(columnarTable[j][i]);
 			}
-			System.out.println();
 		}
 		
 		
@@ -112,15 +108,44 @@ public class ColumnarTranspositionCipherImpl implements IColumnarTranspositionCi
 		
 		// Plot columnar table values
 		int counter = 0;
-		for(int i=1; i<columnarTable.length; i++) {
-			for(int j=0; j<columnarTable[0].length; j++) {
-				
-				System.out.print(columnarTable[i][j]);
+		for(int i=0; i<columnarTable[0].length; i++) {
+			for(int j=1; j<columnarTable.length; j++) {
+				columnarTable[j][i] = phrase.charAt(counter++);
 			}
-			
 		}
 		
-		return null;
+		//Rearrange table to original form
+		outerLoop:
+		for(int i=0; i<columnarTable[0].length; i++) {
+			for(int j=0; j<key.length(); j++) {
+				if(columnarTable[0][i] == key.charAt(j)) {
+					
+					char tempChar = columnarTable[0][j];
+					columnarTable[0][j] = columnarTable[0][i];
+					columnarTable[0][i] = tempChar;
+					
+					for(int k=1; k<columnarTable.length; k++) {
+						
+						tempChar = columnarTable[k][j];
+						columnarTable[k][j] = columnarTable[k][i];
+						columnarTable[k][i] = tempChar;
+						
+					}
+					continue outerLoop;
+				}
+			}
+		}
+		
+		// Build message
+		StringBuilder encodedMessage = new StringBuilder();
+		for(int i=1; i<columnarTable.length; i++) {
+			for(int j=0; j<columnarTable[0].length; j++) {
+				encodedMessage.append(columnarTable[i][j]);
+			}
+		}
+		
+		//Replace all character pad with blank
+		return new String(encodedMessage).replace(characterPad, (char)0);
 	}
 
 }

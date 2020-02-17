@@ -65,8 +65,8 @@ public class ComputeTotalTime {
 		
 		//Railfence---------------------------------------------------------
 		System.out.println("-----------------Columnar transposition------------------------");
-		System.out.println(columnarTransposition.columnarTranspositionEncode("HelloWorld", "german", 'x'));
-		System.out.println(columnarTransposition.columnarTranspositionDecode("oxerholdwxll", "german", 'x'));
+		System.out.println(columnarTransposition.columnarTranspositionEncode("Hello World", "german", 'x'));
+		System.out.println(columnarTransposition.columnarTranspositionDecode("odeohwll xlr", "german", 'x'));
 		
 	}
 	
