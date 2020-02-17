@@ -117,7 +117,7 @@ public class ColumnarTranspositionCipherImpl implements IColumnarTranspositionCi
 				
 				System.out.print(columnarTable[i][j]);
 			}
-			System.out.println();
+			
 		}
 		
 		return null;
