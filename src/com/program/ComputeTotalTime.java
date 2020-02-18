@@ -23,6 +23,8 @@ import com.program.ciphers.runningkey.IRunningKeyCipher;
 import com.program.ciphers.runningkey.RunningKeyCipherImpl;
 import com.program.ciphers.simplesubstitution.ISimpleSubstitutionCipher;
 import com.program.ciphers.simplesubstitution.SimpleSubstitutionCipherImpl;
+import com.program.ciphers.vigenere.IVigenereCipher;
+import com.program.ciphers.vigenere.VigenereCipherImpl;
 
 public class ComputeTotalTime {
 	
@@ -38,6 +40,7 @@ public class ComputeTotalTime {
 		IAutokeyCipher autokey = new AutokeyCipherImpl();
 		IBeaufortCipher beaufort = new BeaufortCipherImpl();
 		IRunningKeyCipher runningKey = new RunningKeyCipherImpl();
+		IVigenereCipher vigenere = new VigenereCipherImpl();
 		
 	
 		//Atbash----------------------------------------------------------
@@ -90,6 +93,11 @@ public class ComputeTotalTime {
 		//Running key---------------------------------------------------------
 		System.out.println("---------------------Running key------------------------");
 		System.out.println(runningKey.runningKeyEncode("Hello World!", "Sample Key for Hello World"));
+		System.out.println(runningKey.runningKeyDecode("Zexaz Ayvji!", "Sample Key for Hello World"));
+		
+		//Vigenere---------------------------------------------------------
+		System.out.println("-----------------------Vigenere------------------------");
+		System.out.println(vigenere.vigenereEncode("Hello World!", "troll"));
 		System.out.println(runningKey.runningKeyDecode("Zexaz Ayvji!", "Sample Key for Hello World"));
 		
 	}
