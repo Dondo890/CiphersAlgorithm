@@ -1,11 +1,12 @@
 package com.program.ciphers.autokey;
 
+import com.program.ciphers.CipherException;
 import com.program.ciphers.GlobalMethod;
 
 public class AutokeyCipherImpl implements IAutokeyCipher{
 
 	@Override
-	public String autokeyEncode(String phrase, String key) {
+	public String autokeyEncode(String phrase, String key) throws CipherException{
 		
 		// Convert phrase to char array
 		char[]wordArray = phrase.toCharArray();
@@ -55,7 +56,7 @@ public class AutokeyCipherImpl implements IAutokeyCipher{
 	}
 
 	@Override
-	public String autokeyDecode(String phrase, String key) {
+	public String autokeyDecode(String phrase, String key) throws CipherException {
 		
 		// Convert phrase to char array
 		char[]wordArray = phrase.toCharArray();
