@@ -10,6 +10,11 @@ public class PolybiusSquareCipherImpl implements IPolybiusSquareCipher{
 	@Override
 	public String polybiusSquareEncode(String phrase, String key, String cipherCharacter) throws CipherException {
 		
+		// Check if key contains special characters or numbers
+		if(key.matches("[\\d\\W_]")) {
+			throw new CipherException(CipherException.INVALID_KEY, new Throwable("Key should not contain numbers and special characters!"));
+		}
+		
 		//If length is not equal to 5
 		if(cipherCharacter.length() != 5) {
 			throw new CipherException(CipherException.INVALID_CIPHER_CHARACTER, new Throwable("Cipher character length should be equal to 5"));
@@ -77,6 +82,11 @@ public class PolybiusSquareCipherImpl implements IPolybiusSquareCipher{
 
 	@Override
 	public String polybiusSquareDecode(String phrase, String key, String cipherCharacter) throws CipherException{
+		
+		// Check if key contains special characters or numbers
+		if(key.matches("[\\d\\W_]")) {
+			throw new CipherException(CipherException.INVALID_KEY, new Throwable("Key should not contain numbers and special characters!"));
+		}
 		
 		//If length is not equal to 5
 		if(cipherCharacter.length() != 5) {

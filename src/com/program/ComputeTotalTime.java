@@ -19,6 +19,8 @@ import com.program.ciphers.railfence.IRailfenceCipher;
 import com.program.ciphers.railfence.RailfenceCipherImpl;
 import com.program.ciphers.rot13.IRot13Cipher;
 import com.program.ciphers.rot13.Rot13CipherImpl;
+import com.program.ciphers.runningkey.IRunningKeyCipher;
+import com.program.ciphers.runningkey.RunningKeyCipherImpl;
 import com.program.ciphers.simplesubstitution.ISimpleSubstitutionCipher;
 import com.program.ciphers.simplesubstitution.SimpleSubstitutionCipherImpl;
 
@@ -35,6 +37,7 @@ public class ComputeTotalTime {
 		IColumnarTranspositionCipher columnarTransposition = new ColumnarTranspositionCipherImpl();
 		IAutokeyCipher autokey = new AutokeyCipherImpl();
 		IBeaufortCipher beaufort = new BeaufortCipherImpl();
+		IRunningKeyCipher runningKey = new RunningKeyCipherImpl();
 		
 	
 		//Atbash----------------------------------------------------------
@@ -79,10 +82,15 @@ public class ComputeTotalTime {
 		System.out.println(autokey.autokeyEncode("Hello World!", "sample"));
 		System.out.println(autokey.autokeyDecode("Zexaz Avvwo!", "sample"));
 		
-		//Autokey---------------------------------------------------------
+		//Beaufort---------------------------------------------------------
 		System.out.println("------------------------Beaufort------------------------");
 		System.out.println(beaufort.beaufortEncode("Hello World!", "sam"));
 		System.out.println(beaufort.beaufortDecode("Lwbhm Qejbp!", "sam"));
+		
+		//Running key---------------------------------------------------------
+		System.out.println("---------------------Running key------------------------");
+		System.out.println(runningKey.runningKeyEncode("Hello World!", "Sample Key for Hello World"));
+		System.out.println(runningKey.runningKeyDecode("Zexaz Ayvji!", "Sample Key for Hello World"));
 		
 	}
 	

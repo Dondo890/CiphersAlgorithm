@@ -8,6 +8,11 @@ public class BeaufortCipherImpl implements IBeaufortCipher{
 	@Override
 	public String beaufortEncode(String phrase, String key) throws CipherException {
 		
+		// Check if key contains special characters or numbers
+		if(key.matches("[\\d\\W_]")) {
+			throw new CipherException(CipherException.INVALID_KEY, new Throwable("Key should not contain numbers and special characters!"));
+		}
+		
 		// Convert phrase to char array
 		char[] wordArray = phrase.toCharArray();
 		
@@ -75,6 +80,12 @@ public class BeaufortCipherImpl implements IBeaufortCipher{
 
 	@Override
 	public String beaufortDecode(String phrase, String key) throws CipherException {
+		
+		// Check if key contains special characters or numbers
+		if(key.matches("[\\d\\W_]")) {
+			throw new CipherException(CipherException.INVALID_KEY, new Throwable("Key should not contain numbers and special characters!"));
+		}
+		
 		// Convert phrase to char array
 		char[] wordArray = phrase.toCharArray();
 		

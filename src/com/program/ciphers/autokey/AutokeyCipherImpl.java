@@ -8,6 +8,11 @@ public class AutokeyCipherImpl implements IAutokeyCipher{
 	@Override
 	public String autokeyEncode(String phrase, String key) throws CipherException{
 		
+		// Check if key contains special characters or numbers
+		if(key.matches("[\\d\\W_]")) {
+			throw new CipherException(CipherException.INVALID_KEY, new Throwable("Key should not contain numbers and special characters!"));
+		}
+
 		// Convert phrase to char array
 		char[]wordArray = phrase.toCharArray();
 		
@@ -57,6 +62,11 @@ public class AutokeyCipherImpl implements IAutokeyCipher{
 
 	@Override
 	public String autokeyDecode(String phrase, String key) throws CipherException {
+		
+		// Check if key contains special characters or numbers
+		if(key.matches("[\\d\\W_]")) {
+			throw new CipherException(CipherException.INVALID_KEY, new Throwable("Key should not contain numbers and special characters!"));
+		}
 		
 		// Convert phrase to char array
 		char[]wordArray = phrase.toCharArray();

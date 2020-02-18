@@ -10,6 +10,11 @@ public class ColumnarTranspositionCipherImpl implements IColumnarTranspositionCi
 	@Override
 	public String columnarTranspositionEncode(String phrase, String key, char characterPad) throws CipherException {
 		
+		// Check if key contains special characters or numbers
+		if(key.matches("[\\d\\W_]")) {
+			throw new CipherException(CipherException.INVALID_KEY, new Throwable("Key should not contain numbers and special characters!"));
+		}
+		
 		//Check if cipher characters is unique
 		for(int i=0; i<key.length(); i++) {
 			for(int j=0; j<key.length(); j++) {
@@ -80,6 +85,11 @@ public class ColumnarTranspositionCipherImpl implements IColumnarTranspositionCi
 
 	@Override
 	public String columnarTranspositionDecode(String phrase, String key, char characterPad) throws CipherException {
+		
+		// Check if key contains special characters or numbers
+		if(key.matches("[\\d\\W_]")) {
+			throw new CipherException(CipherException.INVALID_KEY, new Throwable("Key should not contain numbers and special characters!"));
+		}
 		
 		//Check if cipher characters is unique
 		for(int i=0; i<key.length(); i++) {
