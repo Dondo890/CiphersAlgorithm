@@ -7,6 +7,8 @@ import com.program.ciphers.atbash.AtbashCipherImpl;
 import com.program.ciphers.atbash.IAtbashCipher;
 import com.program.ciphers.autokey.AutokeyCipherImpl;
 import com.program.ciphers.autokey.IAutokeyCipher;
+import com.program.ciphers.beaufort.BeaufortCipherImpl;
+import com.program.ciphers.beaufort.IBeaufortCipher;
 import com.program.ciphers.caesar.CaesarCipherImpl;
 import com.program.ciphers.caesar.ICaesarCipher;
 import com.program.ciphers.columnartransposition.ColumnarTranspositionCipherImpl;
@@ -32,6 +34,7 @@ public class ComputeTotalTime {
 		ISimpleSubstitutionCipher simpleSubstitution = new SimpleSubstitutionCipherImpl();
 		IColumnarTranspositionCipher columnarTransposition = new ColumnarTranspositionCipherImpl();
 		IAutokeyCipher autokey = new AutokeyCipherImpl();
+		IBeaufortCipher beaufort = new BeaufortCipherImpl();
 		
 	
 		//Atbash----------------------------------------------------------
@@ -73,9 +76,13 @@ public class ComputeTotalTime {
 		
 		//Autokey---------------------------------------------------------
 		System.out.println("------------------------Autokey------------------------");
-		System.out.println(autokey.autokeyEncode("Hello World!", "troll"));
-		System.out.println(autokey.autokeyDecode("Avzwz Dscwr!", "troll"));
+		System.out.println(autokey.autokeyEncode("Hello World!", "sample"));
+		System.out.println(autokey.autokeyDecode("Zexaz Avvwo!", "sample"));
 		
+		//Autokey---------------------------------------------------------
+		System.out.println("------------------------Beaufort------------------------");
+		System.out.println(beaufort.beaufortEncode("Hello World!", "sam"));
+		System.out.println(beaufort.beaufortDecode("Lwbhm Qejbp!", "sam"));
 		
 	}
 	
