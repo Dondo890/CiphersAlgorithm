@@ -73,8 +73,8 @@ public class ComputeTotalTime {
 		
 		//Autokey---------------------------------------------------------
 		System.out.println("------------------------Autokey------------------------");
-		System.out.println(autokey.autokeyEncode("Hello World", "hello"));
-		System.out.println(columnarTransposition.columnarTranspositionDecode("odeohwll xlr", "german", 'x'));
+		System.out.println(autokey.autokeyEncode("Hello World!", "troll"));
+		System.out.println(autokey.autokeyDecode("Avzwz Dscwr!", "troll"));
 		
 		
 	}
