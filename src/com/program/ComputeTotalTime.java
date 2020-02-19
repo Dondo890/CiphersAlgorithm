@@ -98,7 +98,7 @@ public class ComputeTotalTime {
 		//Vigenere---------------------------------------------------------
 		System.out.println("-----------------------Vigenere------------------------");
 		System.out.println(vigenere.vigenereEncode("Hello World!", "troll"));
-		System.out.println(runningKey.runningKeyDecode("Zexaz Ayvji!", "Sample Key for Hello World"));
+		System.out.println(vigenere.vigenereDecode("Avzwz Pffwo!", "troll"));
 		
 	}
 	
