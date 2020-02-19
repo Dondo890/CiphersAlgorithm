@@ -107,8 +107,10 @@ public class ComputeTotalTime {
 		System.out.println("--------------------Four Square------------------------");
 		String firstKey = GlobalMethod.randomizeAlphabet(GlobalMethod.polybiusAlphabet);
 		String secondKey = GlobalMethod.randomizeAlphabet(GlobalMethod.polybiusAlphabet);
-		System.out.println(fourSquare.fourSquareEncode("Hello World", firstKey, secondKey));
-		System.out.println(vigenere.vigenereDecode("Avzwz Pffwo!", "troll"));
+		System.out.println(firstKey);
+		System.out.println(secondKey);
+		System.out.println(fourSquare.fourSquareEncode("Hello Worlds", "tusaroldbpfewichynzmvgqxk", "ofmzvbwhlautkecrngxspqiyd", 'x'));
+		System.out.println(fourSquare.fourSquareDecode("pmfueyexioni", "tusaroldbpfewichynzmvgqxk", "ofmzvbwhlautkecrngxspqiyd", 'x'));
 	}
 	
 	

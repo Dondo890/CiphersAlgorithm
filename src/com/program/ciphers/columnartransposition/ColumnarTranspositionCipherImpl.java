@@ -155,7 +155,7 @@ public class ColumnarTranspositionCipherImpl implements IColumnarTranspositionCi
 		}
 		
 		//Replace all character pad with blank
-		return new String(encodedMessage).replace(characterPad, (char)0);
+		return new String(encodedMessage).replace(Character.toString(characterPad), "");
 	}
 
 }
