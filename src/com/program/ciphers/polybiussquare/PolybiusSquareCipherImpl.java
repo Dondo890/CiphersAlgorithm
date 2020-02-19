@@ -49,23 +49,26 @@ public class PolybiusSquareCipherImpl implements IPolybiusSquareCipher{
 			}
 		}
 		
-		//Convert phrase to lower case
-		phrase = phrase.toLowerCase();
 		
 		//Replace all j with i
 		phrase = phrase.replace("j", "j");
 		
 		StringBuilder encodedMessage = new StringBuilder();
-		
 		//Encode phrase
 		phraseLoop:
 		for(int i=0; i<phrase.length(); i++) {
 			for(int j=0; j<5; j++) {
 				for(int k=0; k<5; k++) {
-					if(GlobalMethod.checkForLowerCase(phrase.charAt(i))) {
-						if(polybiusTable[j][k] == phrase.charAt(i)) {
+					if(GlobalMethod.checkForUpperCase(phrase.charAt(i))) {
+						if(Character.toUpperCase(polybiusTable[j][k]) == phrase.charAt(i)) {
 							encodedMessage.append(cipherCharacter.charAt(j));
 							encodedMessage.append(cipherCharacter.charAt(k));
+							continue phraseLoop;
+						}
+					}else if(GlobalMethod.checkForLowerCase(phrase.charAt(i))) {
+						if(Character.toLowerCase(polybiusTable[j][k]) == phrase.charAt(i)) {
+							encodedMessage.append(Character.toLowerCase(cipherCharacter.charAt(j)));
+							encodedMessage.append(Character.toLowerCase(cipherCharacter.charAt(k)));
 							continue phraseLoop;
 						}
 					}else {
@@ -131,13 +134,26 @@ public class PolybiusSquareCipherImpl implements IPolybiusSquareCipher{
 				int row = 0;
 				int column = 0;
 				for(int j=0; j<5; j++) {
-					if(cipherCharacter.charAt(j) == phrase.charAt(i))
+					if(Character.toUpperCase(cipherCharacter.charAt(j)) == phrase.charAt(i))
 						row = j;
 					
-					if(cipherCharacter.charAt(j) == phrase.charAt(i+1))
+					if(Character.toUpperCase(cipherCharacter.charAt(j)) == phrase.charAt(i+1))
 						column = j;
 				}
-				encodedMessage.append(polybiusTable[row][column]);
+				encodedMessage.append(Character.toUpperCase(polybiusTable[row][column]));
+				++i;
+				continue phraseLoop;
+			}else if(GlobalMethod.checkForLowerCase(phrase.charAt(i))) {
+				int row = 0;
+				int column = 0;
+				for(int j=0; j<5; j++) {
+					if(Character.toLowerCase(cipherCharacter.charAt(j)) == phrase.charAt(i))
+						row = j;
+					
+					if(Character.toLowerCase(cipherCharacter.charAt(j)) == phrase.charAt(i+1))
+						column = j;
+				}
+				encodedMessage.append(Character.toLowerCase(polybiusTable[row][column]));
 				++i;
 				continue phraseLoop;
 			}else {

@@ -13,6 +13,8 @@ import com.program.ciphers.caesar.CaesarCipherImpl;
 import com.program.ciphers.caesar.ICaesarCipher;
 import com.program.ciphers.columnartransposition.ColumnarTranspositionCipherImpl;
 import com.program.ciphers.columnartransposition.IColumnarTranspositionCipher;
+import com.program.ciphers.foursquare.FourSquareCipherImpl;
+import com.program.ciphers.foursquare.IFourSquareCipher;
 import com.program.ciphers.polybiussquare.IPolybiusSquareCipher;
 import com.program.ciphers.polybiussquare.PolybiusSquareCipherImpl;
 import com.program.ciphers.railfence.IRailfenceCipher;
@@ -41,6 +43,7 @@ public class ComputeTotalTime {
 		IBeaufortCipher beaufort = new BeaufortCipherImpl();
 		IRunningKeyCipher runningKey = new RunningKeyCipherImpl();
 		IVigenereCipher vigenere = new VigenereCipherImpl();
+		IFourSquareCipher fourSquare = new FourSquareCipherImpl();
 		
 	
 		//Atbash----------------------------------------------------------
@@ -100,6 +103,12 @@ public class ComputeTotalTime {
 		System.out.println(vigenere.vigenereEncode("Hello World!", "troll"));
 		System.out.println(vigenere.vigenereDecode("Avzwz Pffwo!", "troll"));
 		
+		//Four Square---------------------------------------------------------
+		System.out.println("--------------------Four Square------------------------");
+		String firstKey = GlobalMethod.randomizeAlphabet(GlobalMethod.polybiusAlphabet);
+		String secondKey = GlobalMethod.randomizeAlphabet(GlobalMethod.polybiusAlphabet);
+		System.out.println(fourSquare.fourSquareEncode("Hello World", firstKey, secondKey));
+		System.out.println(vigenere.vigenereDecode("Avzwz Pffwo!", "troll"));
 	}
 	
 	
