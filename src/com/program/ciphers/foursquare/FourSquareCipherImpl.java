@@ -45,7 +45,7 @@ public class FourSquareCipherImpl implements IFourSquareCipher{
 		String polybiusAlphabet = GlobalMethod.polybiusAlphabet;
 		
 		//Make copy of phrase without
-		String trimmedPhrase = phrase.replaceAll("[\\d\\W_]", "").replace(" ", "").toLowerCase();
+		String trimmedPhrase = phrase.replaceAll("[\\d\\W_]", "").replace(" ", "").toLowerCase().replace("j", "i");
 		
 		//Append Extra character if phrase length is not even
 		trimmedPhrase = trimmedPhrase.length()%2==0 ? trimmedPhrase : (trimmedPhrase+characterPad);
@@ -136,7 +136,7 @@ public class FourSquareCipherImpl implements IFourSquareCipher{
 		String polybiusAlphabet = GlobalMethod.polybiusAlphabet;
 		
 		//Make copy of phrase without
-		String trimmedPhrase = phrase.replaceAll("[\\d\\W_]", "").replace(" ", "").toLowerCase();
+		String trimmedPhrase = phrase.replaceAll("[\\d\\W_]", "").replace(" ", "").toLowerCase().replace("j", "i");
 		
 		//Append Extra character if phrase length is not even
 		trimmedPhrase = trimmedPhrase.length()%2==0 ? trimmedPhrase : (trimmedPhrase+characterPad);
